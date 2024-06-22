@@ -1,10 +1,46 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4 text-primary my-4">Welcome to Employee Management System</h1>
+    <p class="lead">Manage your employees effectively and efficiently.</p>
+    <hr class="my-4">
+    <p>
+        <a class="btn btn-primary btn-lg" asp-page="/Employees/Index" role="button">View All Employees</a>
+        <a class="btn btn-success btn-lg ml-2" asp-page="/Employees/Create" role="button">Add New Employee</a>
+    </p>
 </div>
+
+<style>
+    .display-4 {
+        color: #007bff;
+    }
+
+    .lead {
+        font-size: 1.25rem;
+        font-weight: 300;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+
+    .btn-success {
+        background-color: #28a745;
+        border-color: #28a745;
+    }
+
+        .btn-success:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
+</style>
