@@ -35,7 +35,7 @@
                 <td>
                     <a class="btn btn-sm btn-info" asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
                     <a class="btn btn-sm btn-secondary" asp-page="./Details" asp-route-id="@item.Id">Details</a>
-                    <a class="btn btn-sm btn-danger" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                    <button class="btn btn-sm btn-danger" onclick="confirmDelete('@item.Id', '@item.Name')">Delete</button>
                 </td>
             </tr>
         }
@@ -43,6 +43,7 @@
 </table>
 
 @section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
@@ -51,6 +52,22 @@
         $(document).ready(function () {
             $('#employeeTable').DataTable();
         });
+
+        function confirmDelete(id, name) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: `You are about to delete ${name}`,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#dc3545',
+                cancelButtonColor: '#6c757d',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = `/Employees/Delete?id=${id}`;
+                }
+            });
+        }
     </script>
 }
 
